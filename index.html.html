@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Портфолио — Dmitry Gryzi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06060a;
+      --card: #0f0f14;
+      --accent1: #ff4da6;
+      --accent2: #5df0ff;
+      --muted: #9aa0a6;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      min-height: 100vh;
+      background: 
+        radial-gradient(1200px 600px at 10% 10%, rgba(93, 240, 255, 0.03), transparent),
+        radial-gradient(900px 400px at 90% 90%, rgba(255, 77, 166, 0.03), transparent),
+        var(--bg);
+      color: #eee;
+      font-family: 'Inter', system-ui, Segoe UI, Roboto, Arial;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+    
+    /* Header */
+    header {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 60px;
+    }
+    
+    .brand {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    
+    .logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #0b0b0b;
+      box-shadow: 
+        0 6px 30px rgba(93, 240, 255, 0.06),
+        inset 0 -6px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .name {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    
+    nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    nav a:hover {
+      color: #fff;
+    }
+    
+    nav a.cta {
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: #080808;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+    
+    nav a.cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 77, 166, 0.3);
+    }
+    
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 28px;
+      margin-bottom: 80px;
+      align-items: center;
+    }
+    
+    .intro {
+      padding: 28px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+      border-radius: 16px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+    
+    h1 {
+      margin: 0;
+      font-size: 36px;
+      line-height: 1.02;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff, var(--muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    p.lead {
+      color: var(--muted);
+      margin-top: 12px;
+      font-size: 18px;
+    }
+    
+    .buttons {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn.ghost {
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+    }
+    
+    .btn.ghost:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    
+    .btn.primary {
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color: #070707;
+    }
+    
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 77, 166, 0.3);
+    }
+    
+    /* Profile Card */
+    .profile-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+      border-radius: 16px;
+      padding: 18px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .avatar {
+      width: 100%;
+      height: 320px;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(255, 77, 166, 0.1), rgba(93, 240, 255, 0.1));
+    }
+    
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+    
+    .avatar:hover img {
+      transform: scale(1.05);
+    }
+    
+    .meta {
+      margin-top: 12px;
+      color: var(--muted);
+    }
+    
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff, var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Обложки - квадратные блоки */
+    .covers-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 80px;
+    }
+    
+    @media (min-width: 768px) {
+      .covers-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+    
+    .cover-item {
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .cover-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    
+    .cover-image {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .cover-item:hover .cover-image {
+      transform: scale(1.02);
+    }
+    
+    /* Афиши - уменьшенные */
+    .posters-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 80px;
+    }
+    
+    @media (min-width: 768px) {
+      .posters-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    .poster-item {
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .poster-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    
+    .poster-image {
+      width: 100%;
+      aspect-ratio: 1 / 1.414;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .poster-item:hover .poster-image {
+      transform: scale(1.02);
+    }
+    
+    /* Видео блок */
+    .video-section {
+      margin-bottom: 80px;
+      text-align: center;
+    }
+    
+    .video-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #000;
+    }
+    
+    /* About Section */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 80px;
+    }
+    
+    .card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    
+    .card h3 {
+      margin-bottom: 16px;
+      font-size: 20px;
+    }
+    
+    .card h4 {
+      margin: 20px 0 12px 0;
+      font-size: 16px;
+    }
+    
+    .card p {
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    
+    .card ul {
+      color: var(--muted);
+      margin-top: 8px;
+      padding-left: 20px;
+    }
+    
+    .card li {
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    
+    /* Social Links */
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    
+    .social-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    
+    /* Footer */
+    .footer {
+      margin-top: 36px;
+      color: var(--muted);
+      text-align: center;
+      padding: 18px;
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    
+    /* ЛАЙТБОКС - УВЕЛИЧЕНИЕ В 1.5 РАЗА */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(6, 6, 10, 0.95);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    
+    .lightbox.active {
+      display: flex;
+    }
+    
+    .lightbox-content {
+      max-width: 90vw;
+      max-height: 90vh;
+      position: relative;
+    }
+    
+    .lightbox-image {
+      width: auto;
+      height: auto;
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      transform: scale(1.5);
+      transition: transform 0.4s ease;
+    }
+    
+    .lightbox.active .lightbox-image {
+      transform: scale(1);
+    }
+    
+    .close-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: rgba(15, 15, 20, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 1001;
+    }
+    
+    .close-btn:hover {
+      background: var(--accent1);
+      transform: rotate(90deg);
+    }
+    
+    .nav-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 60px;
+      background: rgba(15, 15, 20, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 1001;
+    }
+    
+    .nav-btn:hover {
+      background: var(--accent1);
+    }
+    
+    .prev-btn {
+      left: 20px;
+    }
+    
+    .next-btn {
+      right: 20px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      
+      .split {
+        grid-template-columns: 1fr;
+      }
+      
+      header {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+      
+      nav {
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .covers-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .posters-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+      
+      .close-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+    }
+    
+    @media (max-width: 540px) {
+      .buttons {
+        flex-direction: column;
+      }
+      
+      .btn {
+        text-align: center;
+      }
+      
+      nav {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      
+      h1 {
+        font-size: 28px;
+      }
+      
+      .container {
+        padding: 24px 16px;
+      }
+      
+      .covers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .posters-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">DG</div>
+        <div>
+          <div class="name">Dmitry Gryzi</div>
+          <div style="font-size:12px;color:var(--muted)">дизайнер</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#covers">Обложки</a>
+        <a href="#posters">Афиши</a>
+        <a href="#video">Видео</a>
+        <a href="#contact" class="cta">Контакты</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="intro">
+        <h1>Привет — я твой новый дизайнер.</h1>
+        <p class="lead">Обложки, афиши, лого и оформление релизов.</p>
+        <div class="buttons">
+          <a class="btn primary" href="#covers">Посмотреть работы</a>
+          <a class="btn ghost" href="#about">Мои услуги</a>
+        </div>
+      </div>
+
+      <aside class="profile-card">
+        <div class="avatar">
+          <img src="https://i.ibb.co/S4G0XSd9/photo-2025-04-06-08-57-43.jpg" alt="Dmitry Gryzi">
+        </div>
+        <div class="meta">Это я! Точняк.</div>
+      </aside>
+    </section>
+
+    <!-- ОБЛОЖКИ - 10 штук -->
+    <section id="covers">
+      <h2 class="section-header">Обложки</h2>
+      <div class="covers-grid">
+        <!-- Старые обложки -->
+        <div class="cover-item" data-index="0">
+          <img src="https://i.ibb.co/qMFKZvGK/SCARLXRD-FANART-2025.jpg" alt="SCARLXRD" class="cover-image">
+        </div>
+        
+        <div class="cover-item" data-index="1">
+          <img src="https://i.ibb.co/Rp0Z6PMP/BITE59-2025.png" alt="Bite59 - Босодзоку Импала" class="cover-image">
+        </div>
+        
+        <div class="cover-item" data-index="2">
+          <img src="https://i.ibb.co/wNb4fq99/BITE59-2025.jpg" alt="Bite59 - Тараканы" class="cover-image">
+        </div>
+        
+        <div class="cover-item" data-index="3">
+          <img src="https://i.ibb.co/Mys2FHYv/GLUKOZA-HARMONY-Alternative-Cover-2025.jpg" alt="Glukoza - Harmony" class="cover-image">
+        </div>
+
+        <!-- Новые обложки -->
+        <div class="cover-item" data-index="4">
+          <img src="https://i.ibb.co/5gjxDzkq/bite.jpg" alt="Bite59" class="cover-image">
+        </div>
+        
+        <div class="cover-item" data-index="5">
+          <img src="https://i.ibb.co/CpF4vBhy/convolk.jpg" alt="Convolk" class="cover-image">
+        </div>
+        
+        <div class="cover-item" data-index="6">
+          <img src="https://i.ibb.co/PGnSCNsW/grimes.jpg" alt="Grimes" class="cover-image">
+        </div>
+        
+        <div class="cover-item" data-index="7">
+          <img src="https://i.ibb.co/1f8RZpM2/image.jpg" alt="Cover" class="cover-image">
+        </div>
+        
+        <div class="cover-item" data-index="8">
+          <img src="https://i.ibb.co/xKpjPwby/image.png" alt="Cover" class="cover-image">
+        </div>
+        
+        <div class="cover-item" data-index="9">
+          <img src="https://i.ibb.co/hnp7J9G/image.png" alt="Cover" class="cover-image">
+        </div>
+      </div>
+    </section>
+
+    <!-- АФИШИ - 8 штук -->
+    <section id="posters">
+      <h2 class="section-header">Афиши</h2>
+      <div class="posters-grid">
+        <!-- Старые афиши -->
+        <div class="poster-item" data-index="10">
+          <img src="https://i.ibb.co/Q7HsgjK1/image.jpg" alt="Poster" class="poster-image">
+        </div>
+        
+        <div class="poster-item" data-index="11">
+          <img src="https://i.ibb.co/j9cpjM7m/image.jpg" alt="Poster" class="poster-image">
+        </div>
+        
+        <div class="poster-item" data-index="12">
+          <img src="https://i.ibb.co/CKVtZt3d/image.jpg" alt="Poster" class="poster-image">
+        </div>
+        
+        <div class="poster-item" data-index="13">
+          <img src="https://i.ibb.co/CpWWVFPM/image.jpg" alt="Poster" class="poster-image">
+        </div>
+
+        <!-- Новые афиши -->
+        <div class="poster-item" data-index="14">
+          <img src="https://i.ibb.co/MYCHbsz/core.png" alt="Core" class="poster-image">
+        </div>
+        
+        <div class="poster-item" data-index="15">
+          <img src="https://i.ibb.co/qLHH7LGS/photo-2025-05-02-15-10-38.jpg" alt="Poster" class="poster-image">
+        </div>
+        
+        <div class="poster-item" data-index="16">
+          <img src="https://i.ibb.co/WN5NKGqg/photo-2025-07-02-14-55-22.jpg" alt="Poster" class="poster-image">
+        </div>
+        
+        <div class="poster-item" data-index="17">
+          <img src="https://i.ibb.co/wF7XY7X1/image.jpg" alt="Poster" class="poster-image">
+        </div>
+      </div>
+    </section>
+
+    <!-- ВИДЕО -->
+    <section id="video" class="video-section">
+      <h2 class="section-header">Видео</h2>
+      <div class="video-container">
+        <div class="video-wrapper">
+          <iframe src="https://vk.com/video_ext.php?oid=-200528008&id=456239126&hd=4&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- О СЕБЕ И КОНТАКТЫ -->
+    <section id="about" class="split">
+      <div class="card">
+        <h3>Обо мне</h3>
+        <p>Мастер обложечных дел. Работал с Bite59, Utopia Show, Muppy (Великобритания), Getsuga, $uicideboy$ (делал арт на мерч, но взяли не мой вариант, всё равно впишу), Offmi (аватарка в инст), Soda Luv (правда в 2018 году, но считается!), Можем Хуже.</p>
+        <h4>Мои услуги</h4>
+        <ul>
+          <li>Обложка — 4000 ₽</li>
+          <li>Лого — 3000 ₽</li>
+          <li>Оформление паблика — 3500 ₽</li>
+          <li>Мерч — 10 000 ₽</li>
+          <li>Креативы (баннеры/тизеры) — 3000 ₽</li>
+          <li>Превью-видео — 5000 ₽</li>
+          <li>Снять и смонтировать клип — 20 000 ₽</li>
+        </ul>
+      </div>
+
+      <div class="card contact" id="contact">
+        <h3>Контакты</h3>
+        <div class="social-links">
+          <a href="https://t.me/gryzidesign" target="_blank">Telegram: @gryzidesign</a>
+          <a href="https://vk.com/gryzidesign" target="_blank">VK: vk.com/gryzidesign</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">© 2025 • Gryzi. Этот сайт тоже сделал я. Прикол?</div>
+  </div>
+
+  <!-- ЛАЙТБОКС -->
+  <div class="lightbox" id="lightbox">
+    <button class="close-btn">×</button>
+    <button class="nav-btn prev-btn">‹</button>
+    <button class="nav-btn next-btn">›</button>
+    
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="" class="lightbox-image">
+    </div>
+  </div>
+
+  <script>
+    const works = [
+      // Обложки (0-9)
+      { image: "https://i.ibb.co/qMFKZvGK/SCARLXRD-FANART-2025.jpg" },
+      { image: "https://i.ibb.co/Rp0Z6PMP/BITE59-2025.png" },
+      { image: "https://i.ibb.co/wNb4fq99/BITE59-2025.jpg" },
+      { image: "https://i.ibb.co/Mys2FHYv/GLUKOZA-HARMONY-Alternative-Cover-2025.jpg" },
+      { image: "https://i.ibb.co/5gjxDzkq/bite.jpg" },
+      { image: "https://i.ibb.co/CpF4vBhy/convolk.jpg" },
+      { image: "https://i.ibb.co/PGnSCNsW/grimes.jpg" },
+      { image: "https://i.ibb.co/1f8RZpM2/image.jpg" },
+      { image: "https://i.ibb.co/xKpjPwby/image.png" },
+      { image: "https://i.ibb.co/hnp7J9G/image.png" },
+      
+      // Афиши (10-17)
+      { image: "https://i.ibb.co/Q7HsgjK1/image.jpg" },
+      { image: "https://i.ibb.co/j9cpjM7m/image.jpg" },
+      { image: "https://i.ibb.co/CKVtZt3d/image.jpg" },
+      { image: "https://i.ibb.co/CpWWVFPM/image.jpg" },
+      { image: "https://i.ibb.co/MYCHbsz/core.png" },
+      { image: "https://i.ibb.co/qLHH7LGS/photo-2025-05-02-15-10-38.jpg" },
+      { image: "https://i.ibb.co/WN5NKGqg/photo-2025-07-02-14-55-22.jpg" },
+      { image: "https://i.ibb.co/wF7XY7X1/image.jpg" }
+    ];
+
+    let currentWorkIndex = 0;
+
+    // Открытие лайтбокса
+    document.addEventListener('click', (e) => {
+      const workItem = e.target.closest('.cover-item, .poster-item');
+      if (workItem) {
+        const index = parseInt(workItem.dataset.index);
+        openLightbox(index);
+      }
+    });
+
+    function openLightbox(index) {
+      currentWorkIndex = index;
+      const work = works[index];
+      
+      document.getElementById('lightbox-img').src = work.image;
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function navigateWorks(direction) {
+      currentWorkIndex += direction;
+      
+      if (currentWorkIndex < 0) {
+        currentWorkIndex = works.length - 1;
+      } else if (currentWorkIndex >= works.length) {
+        currentWorkIndex = 0;
+      }
+      
+      openLightbox(currentWorkIndex);
+    }
+
+    // Обработчики
+    document.querySelector('.close-btn').addEventListener('click', closeLightbox);
+    document.querySelector('.prev-btn').addEventListener('click', () => navigateWorks(-1));
+    document.querySelector('.next-btn').addEventListener('click', () => navigateWorks(1));
+
+    // Клавиатура
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigateWorks(-1);
+      if (e.key === 'ArrowRight') navigateWorks(1);
+    });
+
+    // Закрытие по клику вне
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeLightbox();
+    });
+
+    // Плавный скролл
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
